@@ -1,0 +1,95 @@
+<div class="col-md-6 rounded mx-auto" id="form-component">
+  <h4 class="p-2">Car Ride Registration Form</h4>
+  <form [formGroup]="contactForm" (ngSubmit)="onSubmit()" class="p-4">
+    <div class="mb-3">
+      <label for="name" class="form-label">Name</label>
+      <input
+        type="text"
+        class="form-control"
+        id="name"
+        formControlName="name"
+      />
+      <div
+        *ngIf="
+          contactForm.get('name').invalid && contactForm.get('name').touched
+        "
+        class="text-danger mt-1"
+      >
+        Name Invalid
+      </div>
+    </div>
+    <div class="mb-3">
+      <label for="startLocation" class="form-label">Start Location</label>
+      <input
+        type="text"
+        class="form-control"
+        id="startLocation"
+        formControlName="startLocation"
+      />
+      <div
+        *ngIf="
+          contactForm.get('startLocation').invalid &&
+          contactForm.get('startLocation').touched
+        "
+        class="text-danger mt-1"
+      >
+        Start Location Invalid
+      </div>
+    </div>
+    <div class="mb-3">
+      <label for="destination" class="form-label">Destination</label>
+      <input
+        type="text"
+        class="form-control"
+        id="destination"
+        formControlName="destination"
+      />
+      <div
+        *ngIf="
+          contactForm.get('destination').invalid &&
+          contactForm.get('destination').touched
+        "
+        class="text-danger mt-1"
+      >
+        Destination Invalid
+      </div>
+    </div>
+    <div class="mb-3">
+      <label for="destination" class="form-label">Car</label>
+      <input type="text" class="form-control" id="car" formControlName="car" />
+      <div
+        *ngIf="contactForm.get('car').invalid && contactForm.get('car').touched"
+        class="text-danger mt-1"
+      >
+        Car Invalid
+      </div>
+    </div>
+    <div class="mb-3">
+      <label for="destination" class="form-label">Seats Available</label>
+      <input
+        type="number"
+        class="form-control"
+        id="seatsAvailable"
+        formControlName="seatsAvailable"
+      />
+      <div
+        *ngIf="
+          contactForm.get('seatsAvailable').invalid &&
+          contactForm.get('seatsAvailable').touched
+        "
+        class="text-danger mt-1"
+      >
+        Seats should be greater than 0 and less than 8
+      </div>
+    </div>
+    <button
+      type="submit"
+      class="btn btn-primary"
+      style="margin-right: 10px"
+      [disabled]="contactForm.invalid"
+    >
+      Submit
+    </button>
+    <a type="button" class="btn btn-primary" routerLink="">Go Back</a>
+  </form>
+</div>
